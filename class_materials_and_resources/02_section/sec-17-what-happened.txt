@@ -1,0 +1,4 @@
+    @GetMapping("/hi")
+    public String sayHi(){
+        return "Hi";
+    }
