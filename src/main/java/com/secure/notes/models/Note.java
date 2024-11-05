@@ -1,10 +1,10 @@
 package com.secure.notes.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.*;
+import lombok.Data;
 
+@Entity
+@Data
 public class Note {
 
     @Id
