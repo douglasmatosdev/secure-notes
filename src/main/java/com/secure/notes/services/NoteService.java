@@ -1,4 +1,4 @@
-package com.secure.services;
+package com.secure.notes.services;
 
 import com.secure.notes.models.Note;
 
