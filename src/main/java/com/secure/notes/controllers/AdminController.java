@@ -19,7 +19,6 @@ public class AdminController {
     @Autowired
     UserService userService;
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/getusers")
     public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
@@ -32,11 +31,8 @@ public class AdminController {
         return ResponseEntity.ok("User role updated");
     }
 
-//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/user/{id}")
     public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
         return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
     }
-
-
 }
