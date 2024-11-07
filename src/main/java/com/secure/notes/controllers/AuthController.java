@@ -35,11 +35,8 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
-/*
- * Don't work now, I don't know why
- * */
-//@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600, allowCredentials="true") // Configuration for specific paths
 public class AuthController {
+
     @Autowired
     JwtUtils jwtUtils;
 
@@ -58,7 +55,6 @@ public class AuthController {
     @Autowired
     UserService userService;
 
-
     @PostMapping("/public/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication;
@@ -72,7 +68,7 @@ public class AuthController {
             return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
         }
 
-        // set the authentication
+//      Set the authentication
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -85,11 +81,13 @@ public class AuthController {
                 .collect(Collectors.toList());
 
         // Prepare the response body, now including the JWT token directly in the body
-        LoginResponse response = new LoginResponse(userDetails.getUsername(), roles, jwtToken);
+        LoginResponse response = new LoginResponse(userDetails.getUsername(),
+                roles, jwtToken);
 
         // Return the response entity with the JWT token included in the response body
         return ResponseEntity.ok(response);
     }
+
 
     @PostMapping("/public/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
@@ -137,6 +135,7 @@ public class AuthController {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
+
     @GetMapping("/user")
     public ResponseEntity<?> getUserDetails(@AuthenticationPrincipal UserDetails userDetails) {
         User user = userService.findByUsername(userDetails.getUsername());
@@ -165,5 +164,17 @@ public class AuthController {
     @GetMapping("/username")
     public String currentUserName(@AuthenticationPrincipal UserDetails userDetails) {
         return (userDetails != null) ? userDetails.getUsername() : "";
+    }
+
+    @PostMapping("/public/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestParam String email){
+        try{
+            userService.generatePasswordResetToken(email);
+            return ResponseEntity.ok(new MessageResponse("Password reset email sent!"));
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new MessageResponse("Error sending password reset email"));
+        }
+
     }
 }
