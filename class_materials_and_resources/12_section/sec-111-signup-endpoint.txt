@@ -1,0 +1,107 @@
+
+// AuthController.java
+@PostMapping("/public/signup")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+        if (userRepository.existsByUserName(signUpRequest.getUsername())) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+        }
+
+        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+        }
+
+        // Create new user's account
+        User user = new User(signUpRequest.getUsername(),
+                signUpRequest.getEmail(),
+                encoder.encode(signUpRequest.getPassword()));
+
+        Set<String> strRoles = signUpRequest.getRole();
+        Role role;
+
+        if (strRoles == null || strRoles.isEmpty()) {
+            role = roleRepository.findByRoleName(AppRole.ROLE_USER)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        } else {
+            String roleStr = strRoles.iterator().next();  
+            if (roleStr.equals("admin")) {
+                role = roleRepository.findByRoleName(AppRole.ROLE_ADMIN)
+                        .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            } else {
+                role = roleRepository.findByRoleName(AppRole.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            }
+
+            user.setAccountNonLocked(true);
+            user.setAccountNonExpired(true);
+            user.setCredentialsNonExpired(true);
+            user.setEnabled(true);
+            user.setCredentialsExpiryDate(LocalDate.now().plusYears(1));
+            user.setAccountExpiryDate(LocalDate.now().plusYears(1));
+            user.setTwoFactorEnabled(false);
+            user.setSignUpMethod("email");
+        }
+        user.setRole(role);
+        userRepository.save(user);
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+	
+	
+// UserRepository.java
+package com.secure.notes.repositories;
+
+import com.secure.notes.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByUserName(String username);
+
+	// Added this
+    Boolean existsByEmail(String email);
+    Boolean existsByUserName(String username);
+}
+
+
+// JSON for Postman Request
+{
+    "info": {
+        "name": "Secure Notes Auth API - Signup",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Signup",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"username\": \"string\", \"email\": \"string\", \"password\": \"string\", \"role\": [\"user\"]}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/auth/public/signup",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "auth",
+                        "public",
+                        "signup"
+                    ]
+                }
+            }
+        }
+    ]
+}
