@@ -221,6 +221,83 @@
 						"url": "http://localhost:8080/api/auth/public/signin"
 					},
 					"response": []
+				},
+				{
+					"name": "Signin Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"user1\", \"password\": \"password1\"}"
+						},
+						"url": "http://localhost:8080/api/auth/public/signin"
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"string\", \"email\": \"string\", \"password\": \"string\", \"role\": [\"user\"]}"
+						},
+						"url": "http://localhost:8080/api/auth/public/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTczMDk4MzI4NiwiZXhwIjoxNzMxMTU2MDg2fQ.aBtuu3by-V8cVYHLhqOMCF6EU40GkG4A_eCQhfAZvOY",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/api/auth/user"
+					},
+					"response": []
+				},
+				{
+					"name": "username",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImlhdCI6MTczMDk4MzI4NiwiZXhwIjoxNzMxMTU2MDg2fQ.aBtuu3by-V8cVYHLhqOMCF6EU40GkG4A_eCQhfAZvOY",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/api/auth/username"
+					},
+					"response": []
 				}
 			]
 		},
