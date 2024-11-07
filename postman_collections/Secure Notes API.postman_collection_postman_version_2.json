@@ -160,11 +160,6 @@
 								"key": "Authorization",
 								"value": "{{jwtToken}}",
 								"type": "text"
-							},
-							{
-								"key": "X-CSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
 							}
 						],
 						"url": "http://localhost:8080/api/admin/getusers"
@@ -190,7 +185,7 @@
 								"type": "text"
 							},
 							{
-								"key": "X-CSRF-TOKEN",
+								"key": "X-XSRF-TOKEN",
 								"value": "{{csrfToken}}",
 								"type": "text"
 							}
@@ -238,14 +233,234 @@
 								"key": "Authorization",
 								"value": "{{jwtToken}}",
 								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/api/admin/user/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account Lock Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text"
 							},
 							{
-								"key": "X-CSRF-TOKEN",
+								"key": "X-XSRF-TOKEN",
 								"value": "{{csrfToken}}",
 								"type": "text"
 							}
 						],
-						"url": "http://localhost:8080/api/admin/user/4"
+						"url": {
+							"raw": "http://localhost:8080/api/admin/update-lock-status?userId=5&lock=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"update-lock-status"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "5"
+								},
+								{
+									"key": "lock",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Roles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/api/admin/roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account Expiry Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/update-expiry-status?userId=5&expire=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"update-expiry-status"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "5"
+								},
+								{
+									"key": "expire",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account Enabled Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/update-enabled-status?userId=5&enabled=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"update-enabled-status"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "5"
+								},
+								{
+									"key": "enabled",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Credentials Expiry Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/update-credentials-expiry-status?userId=5&expire=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"update-credentials-expiry-status"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "5"
+								},
+								{
+									"key": "expire",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/update-password?userId=5&password=newpassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"update-password"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "5"
+								},
+								{
+									"key": "password",
+									"value": "newpassword"
+								}
+							]
+						}
 					},
 					"response": []
 				}
