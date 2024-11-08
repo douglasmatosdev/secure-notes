@@ -27,5 +27,6 @@ For make tests easier, we can use Postman Pre-Request
 - [E-mail Configuration](./docs/EMAIL_CONFIGURATION.md)
 
 ### GitHub Authentication
-1. 
+
+- [GitHub Authentication](./docs/GITHUB_AUTHENTICATION.md)
 
