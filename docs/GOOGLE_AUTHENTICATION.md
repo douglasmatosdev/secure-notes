@@ -23,3 +23,9 @@
 ![OAuth consent screen](./images/google-cloud-console-api-configure-oauth-app-form.png)
 12. Save the client ID and client secret
 ![OAuth consent screen](./images/google-cloud-console-api-configure-oauth-app-id-secret-key.png)
+13. Put the client ID and client secret in the `application.properties` file
+```properties
+# Google OAuth2 configuration
+spring.security.oauth2.client.registration.google.client-id=${GOOGLE_CLIENT_ID}
+spring.security.oauth2.client.registration.google.client-secret=${GOOGLE_CLIENT_SECRET}
+```
