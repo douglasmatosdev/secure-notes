@@ -32,4 +32,5 @@ For make tests easier, we can use Postman Pre-Request
 
 ### Google Authentication
 - [Google Authentication](./docs/GOOGLE_AUTHENTICATION.md)
+- Google Auth dependency: https://github.com/wstrange/GoogleAuth 
 
