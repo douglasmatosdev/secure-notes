@@ -579,7 +579,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"username\": \"admin\", \"password\": \"adminPass\"}"
+							"raw": "{\"username\": \"dev\", \"password\": \"123456\"}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/auth/public/signin",
@@ -647,7 +647,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"username\": \"douglas\", \"email\": \"douglas@email.com\", \"password\": \"douglas\", \"role\": [\"admin\"]}"
+							"raw": "{\n    \"username\": \"dev\",\n    \"email\": \"douglasmatos.contato@email.com\",\n    \"password\": \"douglas\",\n    \"role\": [\"user\"]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/api/auth/public/signup",
@@ -723,6 +723,66 @@
 								"api",
 								"auth",
 								"username"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/public/forgot-password?email=douglasmatos.contato@email.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"public",
+								"forgot-password"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "douglasmatos.contato@email.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/public/reset-password?token=5967f9ca-29b5-4ffc-93b5-014bb41f9b69&newPassword=123456",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"public",
+								"reset-password"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "5967f9ca-29b5-4ffc-93b5-014bb41f9b69"
+								},
+								{
+									"key": "newPassword",
+									"value": "123456"
+								}
 							]
 						}
 					},
