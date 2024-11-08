@@ -35,6 +35,10 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
+/*
+ * Don't work now, I don't know why
+ * */
+//@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600, allowCredentials="true") // Configuration for specific paths
 public class AuthController {
 
     @Autowired
