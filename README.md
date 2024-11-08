@@ -20,3 +20,8 @@ For make tests easier, we can use Postman Pre-Request
 ### IntelliJ IDEA Configuration for ENV Variables
 
 - [IntelliJ IDEA Environment variables](./docs/INTELLIJ_IDEA_ENV_VARIABLES.md)
+
+
+### E-mail Configuration
+
+- [E-mail Configuration](./docs/EMAIL_CONFIGURATION.md)
