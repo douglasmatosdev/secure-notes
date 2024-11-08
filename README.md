@@ -30,3 +30,6 @@ For make tests easier, we can use Postman Pre-Request
 
 - [GitHub Authentication](./docs/GITHUB_AUTHENTICATION.md)
 
+### Google Authentication
+- [Google Authentication](./docs/GOOGLE_AUTHENTICATION.md)
+
