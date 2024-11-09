@@ -34,6 +34,8 @@ spring.security.oauth2.client.registration.google.client-secret=${GOOGLE_CLIENT_
 
 frontend.url=${FRONTEND_URL}
 
+# Needed if you are using AWS Elastic Bean Stalk
+server.port=5000
 
 
 # ENV FILE FORMAT

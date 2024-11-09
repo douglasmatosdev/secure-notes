@@ -25,3 +25,12 @@ replay_pid*
 
 # Do not ignore .zip files in class_materials_and_resources/*
 !class_materials_and_resources/*/*.zip
+
+
+# .env files
+.env
+.env*
+
+# target
+target
+
